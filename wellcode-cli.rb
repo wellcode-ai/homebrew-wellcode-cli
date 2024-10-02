@@ -56,22 +56,16 @@ class WellcodeCli < Formula
 
     def install
       virtualenv_install_with_resources
-
-      # Explicitly install the wellcode-cli package
-      system libexec/"bin/pip", "install", "-e", "."
+  
+      # Install the wellcode-cli package
+      system libexec/"bin/pip", "install", "."
   
       # Create a wrapper script
-      (libexec/"bin/wellcode-cli").write <<~EOS
+      (bin/"wellcode-cli").write <<~EOS
         #!/bin/bash
         export PYTHONPATH="#{libexec}/lib/python3.11/site-packages:$PYTHONPATH"
         exec "#{libexec}/bin/python" -m wellcode_cli.main "$@"
       EOS
-  
-      # Make the wrapper script executable
-      chmod 0755, libexec/"bin/wellcode-cli"
-  
-      # Create a symlink in the bin directory
-      bin.install_symlink libexec/"bin/wellcode-cli"
     end
 
     test do
