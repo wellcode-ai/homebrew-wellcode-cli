@@ -3,15 +3,12 @@ class WellcodeCli < Formula
 
     desc "Engineering Team Metrics Script"
     homepage "https://github.com/wellcode-ai/wellcode-cli"
-    url "https://github.com/wellcode-ai/wellcode-cli/archive/v0.1.3.tar.gz"
-    sha256 "923429327a4249eef32090badb08084826d9850760a5b88567e0bbed04af9657"
+    url "https://github.com/wellcode-ai/wellcode-cli/archive/v0.1.4.tar.gz"
+    sha256 "ad032c08a17be6a436ef3dc21bc8b4041c4a0cbe703085e1a119f65f92a54467"
     license "MIT"
 
-    #depends_on "python@3.11"
-    #depends_on "numpy"
-    #depends_on "openblas"
     depends_on "python@3.11"
-    #depends_on "virtualenv"
+
 
     
     resource "PyGithub" do
@@ -27,12 +24,7 @@ class WellcodeCli < Formula
     resource "python-dotenv" do
       url "https://files.pythonhosted.org/packages/31/06/1ef763af20d0572c032fa22882cfbfb005fba6e7300715a37840858c919e/python-dotenv-1.0.0.tar.gz"
       sha256 "a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba"
-    end
-    
-    #resource "pandas" do
-    #  url "https://files.pythonhosted.org/packages/9c/d6/9f8431bacc2e19dca897724cd097b1bb224a6ad5433784a44b587c7c13af/pandas-2.2.3.tar.gz"
-    #  sha256 "4f18ba62b61d7e192368b84517265a99b4d7ee8912f8708660fb4a366cc82667"
-    #end
+    end  
     
     resource "anthropic" do
       url "https://files.pythonhosted.org/packages/98/7a/4a9d0ceff414a53ee505243e2a8a682b6812fb1faa265efe1417fab8b040/anthropic-0.3.6.tar.gz"
@@ -56,19 +48,9 @@ class WellcodeCli < Formula
 
     def install
       virtualenv_install_with_resources
-  
-      # Install the wellcode-cli package
-      system libexec/"bin/pip3", "install", "."
-  
-      # Create a wrapper script
-      (bin/"wellcode-cli").write <<~EOS
-        #!/bin/bash
-        export PYTHONPATH="#{libexec}/lib/python3.11/site-packages:$PYTHONPATH"
-        exec "#{libexec}/bin/python3" -m wellcode_cli.main "$@"
-      EOS
     end
 
     test do
-      assert_match "Wellcode CLI version 0.1.3", shell_output("#{bin}/wellcode-cli --version")
+      assert_match "wellcode-cli 0.1.4", shell_output("#{bin}/wellcode-cli --version")
     end
   end
