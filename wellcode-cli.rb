@@ -7,7 +7,7 @@ class WellcodeCli < Formula
     sha256 "923429327a4249eef32090badb08084826d9850760a5b88567e0bbed04af9657"
     license "MIT"
 
-    depends_on "python@3"
+    depends_on "python@3.11"
     depends_on "numpy"
     depends_on "openblas"
     
@@ -52,7 +52,7 @@ class WellcodeCli < Formula
     end
 
     def install
-        virtualenv_install_with_resources using: "python3"
+        virtualenv_install_with_resources using
     end
 
     test do
