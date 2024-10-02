@@ -11,7 +11,7 @@ class WellcodeCli < Formula
     #depends_on "numpy"
     #depends_on "openblas"
     depends_on "python@3.11"
-    depends_on "virtualenv"
+    #depends_on "virtualenv"
 
     
     resource "PyGithub" do
@@ -55,8 +55,23 @@ class WellcodeCli < Formula
     end
 
     def install
-      virtualenv_create(libexec, "python3.11")
-      virtualenv_install_with_resources  
+      virtualenv_install_with_resources
+
+      # Explicitly install the wellcode-cli package
+      system libexec/"bin/pip", "install", "-e", "."
+  
+      # Create a wrapper script
+      (libexec/"bin/wellcode-cli").write <<~EOS
+        #!/bin/bash
+        export PYTHONPATH="#{libexec}/lib/python3.11/site-packages:$PYTHONPATH"
+        exec "#{libexec}/bin/python" -m wellcode_cli.main "$@"
+      EOS
+  
+      # Make the wrapper script executable
+      chmod 0755, libexec/"bin/wellcode-cli"
+  
+      # Create a symlink in the bin directory
+      bin.install_symlink libexec/"bin/wellcode-cli"
     end
 
     test do
