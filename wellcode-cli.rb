@@ -7,9 +7,9 @@ class WellcodeCli < Formula
     sha256 "923429327a4249eef32090badb08084826d9850760a5b88567e0bbed04af9657"
     license "MIT"
 
-    depends_on "python@3.11"
-    depends_on "numpy"
-    depends_on "openblas"
+    #depends_on "python@3.11"
+    #depends_on "numpy"
+    #depends_on "openblas"
     
     resource "PyGithub" do
       url "https://files.pythonhosted.org/packages/98/36/386d282903c572b18abc36de68aaf4146db4659c82dceee009ef88a86b67/PyGithub-1.55.tar.gz"
@@ -26,10 +26,10 @@ class WellcodeCli < Formula
       sha256 "a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba"
     end
     
-    resource "pandas" do
-      url "https://files.pythonhosted.org/packages/9c/d6/9f8431bacc2e19dca897724cd097b1bb224a6ad5433784a44b587c7c13af/pandas-2.2.3.tar.gz"
-      sha256 "4f18ba62b61d7e192368b84517265a99b4d7ee8912f8708660fb4a366cc82667"
-    end
+    #resource "pandas" do
+    #  url "https://files.pythonhosted.org/packages/9c/d6/9f8431bacc2e19dca897724cd097b1bb224a6ad5433784a44b587c7c13af/pandas-2.2.3.tar.gz"
+    #  sha256 "4f18ba62b61d7e192368b84517265a99b4d7ee8912f8708660fb4a366cc82667"
+    #end
     
     resource "anthropic" do
       url "https://files.pythonhosted.org/packages/98/7a/4a9d0ceff414a53ee505243e2a8a682b6812fb1faa265efe1417fab8b040/anthropic-0.3.6.tar.gz"
@@ -52,7 +52,7 @@ class WellcodeCli < Formula
     end
 
     def install
-        virtualenv_install_with_resources
+      virtualenv_install_with_resources(using: "python@3.11", system_site_packages: false)
     end
 
     test do
