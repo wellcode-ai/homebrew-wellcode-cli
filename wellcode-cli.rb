@@ -27,8 +27,8 @@ class WellcodeCli < Formula
     end
     
     resource "pandas" do
-      url "https://files.pythonhosted.org/packages/99/f0/f99700ef327e51d291efdf4a6de29e685c4d198cbf8531541fc84d169e0e/pandas-1.3.5.tar.gz"
-      sha256 "1e4285f5de1012de20ca46b188ccf33521bff61ba5c5ebd78b4fb28e5416a9f1"
+      url "https://files.pythonhosted.org/packages/a5/ac/e1e1c2e78d7a0f2d4457a116dac5f9d6e7b4bd2c37c89e954b32fdf80a0c/pandas-2.1.1.tar.gz"
+      sha256 "fecb198dc389429be557cde50a2d46da8434a17fe37d7d41ff102e3987fd6b4b"
     end
     
     resource "anthropic" do
