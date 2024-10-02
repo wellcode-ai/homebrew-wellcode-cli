@@ -46,6 +46,11 @@ class WellcodeCli < Formula
       sha256 "e197a19aa8ec9722928f2206f8de752def0e4c9fc6953527360d1c36d94ddb2f"
     end
 
+    resource "PyJWT" do
+      url "https://files.pythonhosted.org/packages/30/72/8259b2bccfe4673330cea843ab23f86858a419d8f1493f66d413a76c7e3b/PyJWT-2.8.0.tar.gz"
+      sha256 "57e28d156e3d5c10088e0c68abb90bfac3df82b40a71bd0daa20c65ccd5c23de"
+    end
+    
     def install
       virtualenv_install_with_resources
     end
