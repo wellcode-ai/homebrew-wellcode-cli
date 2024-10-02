@@ -41,23 +41,25 @@ class WellcodeCli < Formula
 
   def install
     virtualenv_install_with_resources
-
+  
+    # Remove any existing wellcode-cli script to avoid overwrite error
+    rm_f bin/"wellcode-cli"
+  
     # Install the wellcode-cli package from the downloaded source
     cd buildpath do
       system libexec/"bin/python", "-m", "pip", "install", "."
     end
-
+  
     # Create a wrapper script
     (bin/"wellcode-cli").write <<~EOS
       #!/bin/bash
       export PYTHONPATH="#{libexec}/lib/python3.11/site-packages:$PYTHONPATH"
       exec "#{libexec}/bin/python" -m wellcode_cli.main "$@"
     EOS
-
+  
     # Ensure the wrapper script is executable
     chmod 0755, bin/"wellcode-cli"
   end
-
   test do
     assert_match "Wellcode CLI version 0.1.4", shell_output("#{bin}/wellcode-cli --version")
   end
