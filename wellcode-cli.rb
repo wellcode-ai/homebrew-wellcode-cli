@@ -8,7 +8,9 @@ class WellcodeCli < Formula
     license "MIT"
 
     depends_on "python@3"
-
+    depends_on "numpy"
+    depends_on "openblas"
+    
     resource "PyGithub" do
       url "https://files.pythonhosted.org/packages/98/36/386d282903c572b18abc36de68aaf4146db4659c82dceee009ef88a86b67/PyGithub-1.55.tar.gz"
       sha256 "1bbfff9372047ff3f21d5cd8e07720f3dbfdaf6462fcaed9d815f528f1ba7283"
