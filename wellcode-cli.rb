@@ -81,7 +81,6 @@ class WellcodeCli < Formula
       venv = virtualenv_create(libexec, "python3.11")
     
       # Install all dependencies and the package itself
-      system libexec/"bin/pip", "install", "--upgrade", "pip"
       system libexec/"bin/pip", "install", "."
       
       # Create a wrapper script
@@ -90,6 +89,9 @@ class WellcodeCli < Formula
         export PYTHONPATH="#{libexec}/lib/python3.11/site-packages:$PYTHONPATH"
         exec "#{libexec}/bin/python" -m wellcode_cli.main "$@"
       EOS
+  
+      # Ensure the wrapper script is executable
+      chmod 0755, bin/"wellcode-cli"
     end
 
     test do
