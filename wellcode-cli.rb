@@ -50,7 +50,7 @@ class WellcodeCli < Formula
     end
 
     def install
-      virtualenv_install_with_resources
+        virtualenv_install_with_resources using: "python3"
     end
 
     test do
