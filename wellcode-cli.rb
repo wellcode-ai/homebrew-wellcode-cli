@@ -58,13 +58,13 @@ class WellcodeCli < Formula
       virtualenv_install_with_resources
   
       # Install the wellcode-cli package
-      system libexec/"bin/pip", "install", "."
+      system libexec/"bin/pip3", "install", "."
   
       # Create a wrapper script
       (bin/"wellcode-cli").write <<~EOS
         #!/bin/bash
         export PYTHONPATH="#{libexec}/lib/python3.11/site-packages:$PYTHONPATH"
-        exec "#{libexec}/bin/python" -m wellcode_cli.main "$@"
+        exec "#{libexec}/bin/python3" -m wellcode_cli.main "$@"
       EOS
     end
 
