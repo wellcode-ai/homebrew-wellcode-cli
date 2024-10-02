@@ -7,7 +7,7 @@ class WellcodeCli < Formula
     sha256 "923429327a4249eef32090badb08084826d9850760a5b88567e0bbed04af9657"
     license "MIT"
 
-    depends_on "python@3.7"
+    depends_on "python@3"
 
     resource "PyGithub" do
       url "https://files.pythonhosted.org/packages/98/36/386d282903c572b18abc36de68aaf4146db4659c82dceee009ef88a86b67/PyGithub-1.55.tar.gz"
