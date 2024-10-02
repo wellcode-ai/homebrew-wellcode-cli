@@ -52,7 +52,7 @@ class WellcodeCli < Formula
     end
 
     def install
-        virtualenv_install_with_resources using
+        virtualenv_install_with_resources
     end
 
     test do
