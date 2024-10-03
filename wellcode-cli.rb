@@ -3,8 +3,8 @@ class WellcodeCli < Formula
 
   desc "Engineering Team Metrics Script"
   homepage "https://github.com/wellcode-ai/wellcode-cli"
-  url "https://github.com/wellcode-ai/wellcode-cli/archive/v0.1.6.tar.gz"
-  sha256 "0577aa56ec7df6f40599b5dfa6b5687f9a0404105d46129a77d08166ad8ed7ee"
+  url "https://github.com/wellcode-ai/wellcode-cli/archive/v0.1.7.tar.gz"
+  sha256 "80b1d80c2c97d71db8f785a174d674d61380765d0bf99780272e58f5e25defcf"
   license "MIT"
 
   depends_on "python@3.11"
@@ -61,6 +61,6 @@ class WellcodeCli < Formula
     chmod 0755, bin/"wellcode-cli"
   end
   test do
-    assert_match "Wellcode CLI version 0.1.6", shell_output("#{bin}/wellcode-cli --version")
+    assert_match "Wellcode CLI version 0.1.7", shell_output("#{bin}/wellcode-cli --version")
   end
 end
